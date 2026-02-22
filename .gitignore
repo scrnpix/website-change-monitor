@@ -1,0 +1,10 @@
+node_modules/
+dist/
+snapshots/
+*.tgz
+
+.env
+.env.local
+!.env.example
+
+*.log
