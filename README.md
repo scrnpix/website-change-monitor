@@ -8,7 +8,7 @@ Powered by [Scrnpix](https://scrnpix.com?ref=website-change-monitor) — [Get yo
 
 ```bash
 # Clone the repo
-git clone https://github.com/AshkanAleshworski/website-change-monitor.git
+git clone https://github.com/scrnpix/website-change-monitor.git
 cd website-change-monitor
 
 # Install dependencies
@@ -16,9 +16,10 @@ npm install
 
 # Configure
 cp monitor.config.example.yml monitor.config.yml
-cp .env.example .env
 # Edit monitor.config.yml with your sites and alert webhooks
-# Edit .env with your SCRNPIX_API_KEY
+
+# Set your Scrnpix API key
+export SCRNPIX_API_KEY="your_api_key_here"
 
 # Run
 npm run monitor
@@ -141,7 +142,7 @@ On first run (no baseline exists), the screenshot is saved as both latest and ba
 
 | Error | Fix |
 |---|---|
-| `SCRNPIX_API_KEY environment variable is required` | Set `SCRNPIX_API_KEY` in `.env` or environment |
+| `SCRNPIX_API_KEY environment variable is required` | Set `SCRNPIX_API_KEY` in your environment or CI secrets |
 | `Config file not found` | Ensure `monitor.config.yml` exists or pass `--config path` |
 | `Unauthorized` (401) | Check your API key is valid |
 | `Insufficient credits` (402) | Top up credits at scrnpix.com |

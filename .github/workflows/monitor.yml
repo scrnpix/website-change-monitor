@@ -26,9 +26,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ./snapshots
-          key: snapshots-${{ github.ref_name }}
+          key: snapshots-${{ github.ref_name }}-${{ github.run_id }}
           restore-keys: |
-            snapshots-
+            snapshots-${{ github.ref_name }}-
 
       - name: Run monitor
         env:

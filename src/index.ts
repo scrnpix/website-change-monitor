@@ -17,7 +17,7 @@ Environment variables:
   SCRNPIX_API_KEY   (required) Your Scrnpix API key
   SCRNPIX_API_URL   (optional) Override API base URL
 
-Documentation: https://github.com/AshkanAleshworski/website-change-monitor`);
+Documentation: https://github.com/scrnpix/website-change-monitor`);
 }
 
 export async function run(argv: string[] = process.argv.slice(2)): Promise<number> {
