@@ -1,0 +1,41 @@
+{
+  "name": "website-change-monitor",
+  "version": "1.0.0",
+  "description": "Scheduled website change monitoring with visual diff and alerts. Powered by Scrnpix.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "monitor": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "website-monitor",
+    "visual-diff",
+    "screenshot",
+    "change-detection",
+    "scrnpix"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "jpeg-js": "^0.4.4",
+    "pixelmatch": "^6.0.0",
+    "pngjs": "^7.0.0",
+    "yaml": "^2.7.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^9.0.0",
+    "nock": "^14.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}

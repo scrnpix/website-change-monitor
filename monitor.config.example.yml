@@ -1,0 +1,30 @@
+# Website Change Monitor Configuration
+# Copy this file to monitor.config.yml and update with your settings.
+
+sites:
+  - url: "https://example.com"
+    name: "Example Homepage"
+    # viewport:
+    #   width: 1280
+    #   height: 720
+    # fullPage: false
+    # format: "png"
+
+diff:
+  threshold: 0.1           # pixelmatch per-pixel sensitivity (0–1)
+  changeThreshold: 0.5     # % of changed pixels to trigger alert (0–100)
+
+storage:
+  type: "local"
+  path: "./snapshots"
+
+alerts:
+  slack:
+    webhookUrl: "https://hooks.slack.com/services/YOUR/WEBHOOK/URL"
+  # discord:
+  #   webhookUrl: "https://discord.com/api/webhooks/YOUR/WEBHOOK/URL"
+
+# retry:
+#   maxAttempts: 3
+#   initialDelayMs: 1000
+#   maxDelayMs: 30000
