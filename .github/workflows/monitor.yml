@@ -22,6 +22,19 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Validate required secrets
+        env:
+          SCRNPIX_API_KEY: ${{ secrets.SCRNPIX_API_KEY }}
+          MONITOR_CONFIG_YML: ${{ secrets.MONITOR_CONFIG_YML }}
+        run: |
+          [ -n "$SCRNPIX_API_KEY" ] || { echo "::error::Missing SCRNPIX_API_KEY"; exit 1; }
+          [ -n "$MONITOR_CONFIG_YML" ] || { echo "::error::Missing MONITOR_CONFIG_YML"; exit 1; }
+
+      - name: Write monitor config
+        env:
+          MONITOR_CONFIG_YML: ${{ secrets.MONITOR_CONFIG_YML }}
+        run: printf "%s\n" "$MONITOR_CONFIG_YML" > monitor.config.yml
+
       - name: Restore snapshots cache
         uses: actions/cache@v4
         with:
@@ -33,7 +46,7 @@ jobs:
       - name: Run monitor
         env:
           SCRNPIX_API_KEY: ${{ secrets.SCRNPIX_API_KEY }}
-        run: npm run monitor
+        run: npm run monitor -- --config monitor.config.yml
 
       - name: Upload diff artifacts
         if: always()
