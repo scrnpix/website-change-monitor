@@ -119,10 +119,19 @@ Tips for reducing false positives:
 
 ### GitHub Actions
 
-The included `.github/workflows/monitor.yml` runs every 6 hours:
+The included `.github/workflows/monitor.yml` runs every 6 hours. It requires two repository secrets:
 
-1. Add `SCRNPIX_API_KEY` to your repository secrets
-2. Create `monitor.config.yml` in the repo root
+| Secret | Description |
+|---|---|
+| `SCRNPIX_API_KEY` | Your Scrnpix API key |
+| `MONITOR_CONFIG_YML` | Full YAML config content (same format as `monitor.config.example.yml`) |
+
+The workflow writes `MONITOR_CONFIG_YML` to `monitor.config.yml` at runtime, so production URLs and webhook secrets are never committed to the repository.
+
+**Setup:**
+
+1. Add both secrets under **Settings → Secrets and variables → Actions**
+2. For `MONITOR_CONFIG_YML`, paste the full contents of your config (sites, thresholds, alert webhooks, etc.)
 3. Snapshots are cached between runs via `actions/cache`
 4. Diff images are uploaded as artifacts (30-day retention)
 
